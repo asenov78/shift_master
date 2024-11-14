@@ -1,0 +1,12 @@
+Options -Indexes
+<Files ".env">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Redirect if installation is complete
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/install/installed.txt -f
+RewriteRule ^(.*)$ / [R=301,L]
